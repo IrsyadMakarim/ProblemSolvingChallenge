@@ -4,6 +4,8 @@ public class CircleMove : MonoBehaviour
 {
     Rigidbody2D rb;
 
+    float MoveSpeed = 100f;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -16,21 +18,15 @@ public class CircleMove : MonoBehaviour
 
     private void Move()
     {
-        if (Input.GetKey("up"))
+        if (Input.GetMouseButton(0))
         {
-            rb.velocity = new Vector2(0, 10);
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 dir = (mousePos - transform.position).normalized;
+            rb.velocity = new Vector2(dir.x * MoveSpeed, dir.y * MoveSpeed);
         }
-        else if (Input.GetKey("down"))
+        else
         {
-            rb.velocity = new Vector2(0, -10);
-        }
-        else if (Input.GetKey("left"))
-        {
-            rb.velocity = new Vector2(-10, 0);
-        }
-        else if (Input.GetKey("right"))
-        {
-            rb.velocity = new Vector2(10, 0);
+            rb.velocity = Vector2.zero;
         }
     }
 }
