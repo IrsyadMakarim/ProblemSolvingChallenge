@@ -12,10 +12,12 @@ public class CircleMove : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         xPos = Random.Range(-10, 10);
         yPos = Random.Range(-10, 10);
+
+        Move();
     }
 
-    private void Update()
+    private void Move()
     {
-        rb.velocity = new Vector3(xPos, yPos, 0);
+        rb.velocity = new Vector2(xPos, yPos);
     }
 }
