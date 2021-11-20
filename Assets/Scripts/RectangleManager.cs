@@ -7,6 +7,7 @@ public class RectangleManager : MonoBehaviour
 
     private float randX;
     private float randY;
+    private bool _readyToSpawn;
 
     private void Awake()
     {
@@ -17,11 +18,13 @@ public class RectangleManager : MonoBehaviour
             Instantiate(Rectangles[i], new Vector3(randX, randY, 0), Quaternion.identity);
             RandomizePosition();
         }
-    }   
+    }
 
-    public void RandomizePosition()
+    public Vector3 RandomizePosition()
     {
         randX = Random.Range(_area.left, _area.right);
         randY = Random.Range(_area.down, _area.up);
+        return new Vector3(randX, randY, 0);
+       
     }
 }

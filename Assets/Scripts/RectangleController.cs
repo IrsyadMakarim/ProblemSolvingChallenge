@@ -1,24 +1,28 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RectangleController : MonoBehaviour
 {
     private GameObject Player;
     private ScoreManager _score;
     private bool _playerInRange = false;
+    private RectangleManager _rectManager;
+    private bool _rectangleDestroyed;
 
     private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
         _score = FindObjectOfType<ScoreManager>();
+        _rectManager = FindObjectOfType<RectangleManager>();
     }
 
     private void Update()
     {
-        if (_playerInRange)
+        if (_playerInRange && !_rectangleDestroyed)
         {
             DestroyObject();
+            Debug.Log(_rectangleDestroyed);
+
+            Invoke("ActivateObject", 3);
         }
     }
 
@@ -38,10 +42,19 @@ public class RectangleController : MonoBehaviour
         }
     }
 
+    public void ActivateObject()
+    {
+        _playerInRange = false;
+        _rectangleDestroyed = false;
+        gameObject.transform.position = _rectManager.RandomizePosition();
+        gameObject.SetActive(true);
+    }
+
     public void DestroyObject()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
         _score.AddScore();
         _score.UpdateScore();
+        _rectangleDestroyed = true;
     }
 }
