@@ -4,29 +4,19 @@ public class CircleMove : MonoBehaviour
 {
     Rigidbody2D rb;
 
-    float MoveSpeed = 100f;
+    private int xPos;
+    private int yPos;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-    }
+        yPos = Random.Range(-10, 0);
 
-    private void Update()
-    {
-        Move();
+        Invoke("Move", 2);
     }
 
     private void Move()
     {
-        if (Input.GetMouseButton(0))
-        {
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 dir = (mousePos - transform.position).normalized;
-            rb.velocity = new Vector2(dir.x * MoveSpeed, dir.y * MoveSpeed);
-        }
-        else
-        {
-            rb.velocity = Vector2.zero;
-        }
+        rb.velocity = new Vector2(0, yPos);
     }
 }

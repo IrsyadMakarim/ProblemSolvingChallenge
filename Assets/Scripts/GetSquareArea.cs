@@ -15,10 +15,10 @@ public class GetSquareArea : MonoBehaviour
 
     void GetAroundLength()
     {
-        left = -GetLength(Vector2.left);
-        right = GetLength(Vector2.right);
-        up = GetLength(Vector2.up);
-        down = -GetLength(Vector2.down);
+        left = -GetLength(Vector2.left) + 1;
+        right = GetLength(Vector2.right) - 1;
+        up = GetLength(Vector2.up) - 1;
+        down = -GetLength(Vector2.down) + 3;
     }
 
     float GetLength(Vector2 direction)
