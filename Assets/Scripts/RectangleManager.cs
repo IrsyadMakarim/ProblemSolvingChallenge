@@ -17,7 +17,7 @@ public class RectangleManager : MonoBehaviour
             Instantiate(Rectangles[i], new Vector3(randX, randY, 0), Quaternion.identity);
             RandomizePosition();
         }
-    }
+    }   
 
     public void RandomizePosition()
     {

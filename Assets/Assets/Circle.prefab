@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 8546203117713693880}
   - component: {fileID: 319229661311763605}
   - component: {fileID: 8206027011339920388}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Circle
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,6 +128,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.01139617, y: 0}
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 1.6025691
